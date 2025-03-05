@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.quiz">
+
+    <!-- Разрешение на работу с USB -->
+    <uses-feature android:name="android.hardware.usb.host"/>
+    <uses-permission android:name="android.permission.USB_PERMISSION" />
+
+
+    <application
+        android:allowBackup="true"
+        android:theme="@style/Theme.Quiz"
+        android:usesCleartextTraffic="true"
+        android:label="QuizApp"
+        android:icon="@mipmap/ic_launcher">
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Фильтр для автоматического обнаружения USB-устройств -->
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/usb_device_filter" />
+        </activity>
+        <activity
+            android:name=".UserInputActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoadingActivity"
+            android:exported="true" />
+        <activity android:name=".QuizActivity" android:exported="false"/>
+        <activity android:name=".ResultsActivity" android:exported="false"/>
+    </application>
+</manifest>
